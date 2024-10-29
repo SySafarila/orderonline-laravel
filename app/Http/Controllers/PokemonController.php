@@ -138,13 +138,4 @@ class PokemonController extends Controller
 
         return response()->json(['message' => $id . ' not in favorite', 400]);
     }
-
-    public function isFavorite($name)
-    {
-        $find = Favorite::where('pokemon_name', $name)->first();
-        if ($find) {
-            return response()->json(['message' => $name . " is in favorite", 'status' => true]);
-        }
-        return response()->json(['message' => $name . " is not in favorite", 'status' => false]);
-    }
 }
