@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/pokemons', PokemonController::class);
+Route::resource('/pokemons', PokemonController::class)->only(['index', 'show', 'store', 'destroy']);
