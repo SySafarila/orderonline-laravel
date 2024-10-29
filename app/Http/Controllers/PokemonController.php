@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use Error;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
@@ -16,6 +17,12 @@ class PokemonController extends Controller
     public function index(Request $request)
     {
         try {
+            $cacheKey = 'pokemon_' . $request->offset . '_' . $request->limit;
+
+            if (Cache::has($cacheKey)) {
+                return Cache::get($cacheKey);
+            }
+
             $response = Http::get('https://pokeapi.co/api/v2/pokemon', [
                 'offset' => $request->offset,
                 'limit' => $request->limit
@@ -34,7 +41,10 @@ class PokemonController extends Controller
                 foreach ($response->results as $pokemon) {
                     $pokemon->url = Str::replace("https://pokeapi.co/api/v2/pokemon", route('pokemons.index'), $pokemon->url);
                 }
-                return $response;
+
+                Cache::put($cacheKey, $response, now()->addHours(6));
+
+                return response()->json($response);
             }
             throw new Error($response, $response->status());
         } catch (\Throwable $th) {
@@ -79,8 +89,16 @@ class PokemonController extends Controller
     public function show(string $id)
     {
         try {
+            $cacheKey = 'show_' . $id;
+
+            if (Cache::has($cacheKey)) {
+                return Cache::get($cacheKey);
+            }
+
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/$id");
             if ($response->status() == 200) {
+                Cache::put($cacheKey, $response->object(), now()->addHours(6));
+
                 return $response->object();
             }
             throw new Error($response, $response->status());
@@ -123,7 +141,6 @@ class PokemonController extends Controller
 
     public function isFavorite($name)
     {
-
         $find = Favorite::where('pokemon_name', $name)->first();
         if ($find) {
             return response()->json(['message' => $name . " is in favorite", 'status' => true]);
