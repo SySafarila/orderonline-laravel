@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('/pokemons', PokemonController::class)->only(['index', 'show', 'store', 'destroy']);
+Route::get('/favorite/check/{name}', [PokemonController::class, 'isFavorite'])->name('favorite.check');
