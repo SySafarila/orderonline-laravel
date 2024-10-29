@@ -578,6 +578,125 @@
 					"body": "{\n    \"message\": \"ivysaur already in favorite\"\n}"
 				}
 			]
+		},
+		{
+			"name": "DELETE Remove Pokemon From Favorite",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://orderonlinelaravel.test/api/favorite/ivysaur",
+					"protocol": "http",
+					"host": [
+						"orderonlinelaravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"favorite",
+						"ivysaur"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Deleted",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite/ivysaur",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite",
+								"ivysaur"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 10:05:03 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "53"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"ivysaur deleted from favorite\"\n}"
+				}
+			]
 		}
 	]
 }
