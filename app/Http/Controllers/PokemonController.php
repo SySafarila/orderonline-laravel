@@ -60,9 +60,10 @@ class PokemonController extends Controller
 
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/$id");
             if ($response->status() == 200) {
-                Cache::put($cacheKey, $response->object(), now()->addHours(6));
+                $response = $response->object();
+                Cache::put($cacheKey, ['abilities' => $response->abilities, 'species' => $response->species, 'sprites' => $response->sprites, 'height' => $response->height, 'weight' => $response->weight, 'id' => $response->id, 'types' => $response->types, 'name' => $response->name], now()->addHours(6));
 
-                return $response->object();
+                return ['abilities' => $response->abilities, 'species' => $response->species, 'sprites' => $response->sprites, 'height' => $response->height, 'weight' => $response->weight, 'id' => $response->id, 'types' => $response->types, 'name' => $response->name];
             }
             throw new Error($response, $response->status());
         } catch (\Throwable $th) {
