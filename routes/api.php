@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbilityController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PokemonController;
 use Illuminate\Http\Request;
@@ -22,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // pokemons
 Route::resource('/pokemons', PokemonController::class)->only(['index', 'show']);
+
+// abilities
+Route::resource('/abilities', AbilityController::class)->only(['index', 'show']);
 
 // favorite
 Route::get('/favorite/check/{name}', [FavoriteController::class, 'isFavorite'])->name('favorite.check');

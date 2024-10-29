@@ -10,9 +10,6 @@ use Illuminate\Support\Str;
 
 class PokemonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         try {
@@ -52,30 +49,10 @@ class PokemonController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * add to favorite
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         try {
-            $cacheKey = 'show_' . $id;
+            $cacheKey = 'show_pokemon_' . $id;
 
             if (Cache::has($cacheKey)) {
                 return Cache::get($cacheKey);
@@ -92,30 +69,5 @@ class PokemonController extends Controller
             // throw $th;
             return response($th->getMessage(), $th->getCode());
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * delete from favorite
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
