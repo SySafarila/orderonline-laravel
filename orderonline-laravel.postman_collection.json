@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "c48376a5-e4c8-43b5-a713-8145cf689b72",
+		"name": "orderonline-laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10726227"
+	},
+	"item": [
+		{
+			"name": "GET Pokemons",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://orderonlinelaravel.test/api/pokemons",
+					"protocol": "http",
+					"host": [
+						"orderonlinelaravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"pokemons"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET Pokemons",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/pokemons",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"pokemons"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 09:57:26 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 1302,\n    \"next\": \"http://orderonlinelaravel.test/api/pokemons?offset=20&limit=20\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"name\": \"bulbasaur\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/1/\"\n        },\n        {\n            \"name\": \"ivysaur\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/2/\"\n        },\n        {\n            \"name\": \"venusaur\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/3/\"\n        },\n        {\n            \"name\": \"charmander\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/4/\"\n        },\n        {\n            \"name\": \"charmeleon\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/5/\"\n        },\n        {\n            \"name\": \"charizard\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/6/\"\n        },\n        {\n            \"name\": \"squirtle\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/7/\"\n        },\n        {\n            \"name\": \"wartortle\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/8/\"\n        },\n        {\n            \"name\": \"blastoise\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/9/\"\n        },\n        {\n            \"name\": \"caterpie\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/10/\"\n        },\n        {\n            \"name\": \"metapod\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/11/\"\n        },\n        {\n            \"name\": \"butterfree\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/12/\"\n        },\n        {\n            \"name\": \"weedle\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/13/\"\n        },\n        {\n            \"name\": \"kakuna\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/14/\"\n        },\n        {\n            \"name\": \"beedrill\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/15/\"\n        },\n        {\n            \"name\": \"pidgey\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/16/\"\n        },\n        {\n            \"name\": \"pidgeotto\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/17/\"\n        },\n        {\n            \"name\": \"pidgeot\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/18/\"\n        },\n        {\n            \"name\": \"rattata\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/19/\"\n        },\n        {\n            \"name\": \"raticate\",\n            \"url\": \"http://orderonlinelaravel.test/api/pokemons/20/\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Check Pokemon Favorite",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://orderonlinelaravel.test/api/favorite/check/bulbasaur",
+					"protocol": "http",
+					"host": [
+						"orderonlinelaravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"favorite",
+						"check",
+						"bulbasaur"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Not Favorite",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite/check/bulbasaur",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite",
+								"check",
+								"bulbasaur"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 09:59:10 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"bulbasaur is not in favorite\",\n    \"status\": false\n}"
+				},
+				{
+					"name": "Favorite",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite/check/bulbasaur",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite",
+								"check",
+								"bulbasaur"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 10:00:08 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"bulbasaur is in favorite\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Pokemons Favorite",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://orderonlinelaravel.test/api/favorite",
+					"protocol": "http",
+					"host": [
+						"orderonlinelaravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"favorite"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET Pokemons Favorite",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 10:01:13 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 4,\n        \"pokemon_name\": \"bulbasaur\",\n        \"created_at\": \"2024-10-29T09:59:58.000000Z\",\n        \"updated_at\": \"2024-10-29T09:59:58.000000Z\",\n        \"abilities\": [\n            {\n                \"id\": 7,\n                \"favorite_id\": 4,\n                \"name\": \"overgrow\",\n                \"is_hidden\": 0,\n                \"created_at\": \"2024-10-29T09:59:58.000000Z\",\n                \"updated_at\": \"2024-10-29T09:59:58.000000Z\"\n            },\n            {\n                \"id\": 8,\n                \"favorite_id\": 4,\n                \"name\": \"chlorophyll\",\n                \"is_hidden\": 1,\n                \"created_at\": \"2024-10-29T09:59:58.000000Z\",\n                \"updated_at\": \"2024-10-29T09:59:58.000000Z\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "POST Add Pokemon To Favorite",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://orderonlinelaravel.test/api/favorite",
+					"protocol": "http",
+					"host": [
+						"orderonlinelaravel",
+						"test"
+					],
+					"path": [
+						"api",
+						"favorite"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Added",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 10:03:12 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"ivysaur added to favorite\"\n}"
+				},
+				{
+					"name": "Already Added",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://orderonlinelaravel.test/api/favorite",
+							"protocol": "http",
+							"host": [
+								"orderonlinelaravel",
+								"test"
+							],
+							"path": [
+								"api",
+								"favorite"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.22.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.10"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Oct 2024 10:03:51 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"ivysaur already in favorite\"\n}"
+				}
+			]
+		}
+	]
+}
