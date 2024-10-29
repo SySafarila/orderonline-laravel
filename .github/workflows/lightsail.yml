@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/dockerized/
-            docker compose exec -it php-fpm sh -c "php artisan down --render='errors::upgrade'"
+            docker compose exec -it php-fpm sh -c "php artisan down"
             cd ~/dockerized/laravel/
             git checkout prod
             git fetch
