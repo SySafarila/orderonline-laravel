@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Favorite;
 use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -67,20 +66,7 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'pokemon_name' => ['required', 'string', 'max:255']
-        ]);
-
-        $find = Favorite::where('pokemon_name', $request->pokemon_name)->first();
-        if ($find) {
-            return response()->json(['message' => $request->pokemon_name . ' already in favorite'], 400);
-        }
-
-        Favorite::create([
-            'pokemon_name' => $request->pokemon_name
-        ]);
-
-        return response()->json(['message' => $request->pokemon_name . ' added to favorite']);
+        //
     }
 
     /**
@@ -130,12 +116,6 @@ class PokemonController extends Controller
      */
     public function destroy(string $id)
     {
-        $find = Favorite::where('pokemon_name', $id)->first();
-        if ($find) {
-            $find->delete();
-            return response()->json(['message' => $id . ' deleted from favorite']);
-        }
-
-        return response()->json(['message' => $id . ' not in favorite', 400]);
+        //
     }
 }
