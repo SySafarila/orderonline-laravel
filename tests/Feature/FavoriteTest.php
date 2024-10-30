@@ -19,7 +19,7 @@ class FavoriteTest extends TestCase
 
     public function test_add_favorite_pokemon(): void
     {
-        $response = $this->post(route('favorite.store'), [
+        $responseSuccess = $this->post(route('favorite.store'), [
             'pokemon_name' => 'bulbasaur',
             'abilities' => [
                 [
@@ -32,7 +32,22 @@ class FavoriteTest extends TestCase
                 ]
             ]
         ]);
-        $response->assertStatus(200);
+        $responseSuccess->assertStatus(200);
+
+        $responseFail = $this->post(route('favorite.store'), [
+            'pokemon_name' => 'bulbasaurxxx',
+            'abilities' => [
+                [
+                    'name' => 'overgrow',
+                    'is_hidden' => false
+                ],
+                [
+                    'name' => 'chlorophyll',
+                    'is_hidden' => true
+                ]
+            ]
+        ]);
+        $responseFail->assertStatus(404);
     }
 
     public function test_check_pokemon_favorite(): void

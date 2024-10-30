@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class FavoriteController extends Controller
 {
@@ -38,17 +40,33 @@ class FavoriteController extends Controller
             'abilities.*.is_hidden' => ['required', 'boolean']
         ]);
 
+        $cacheKey = 'show_pokemon_for_favorite_' . $request->pokemon_name;
+
+        if (Cache::has($cacheKey)) {
+            $response_3rd_api = Cache::get($cacheKey);
+            $response_3rd_api = json_decode(json_encode($response_3rd_api));
+        } else {
+            $response_3rd_api = Http::get("https://pokeapi.co/api/v2/pokemon/" . $request->pokemon_name);
+
+            if ($response_3rd_api->status() !== 200) {
+                return response()->json(['message' => 'Invalid pokemon'], 404);
+            }
+
+            $response_3rd_api = $response_3rd_api->object();
+            Cache::put($cacheKey, ['abilities' => $response_3rd_api->abilities, 'species' => $response_3rd_api->species, 'sprites' => $response_3rd_api->sprites, 'height' => $response_3rd_api->height, 'weight' => $response_3rd_api->weight, 'id' => $response_3rd_api->id, 'types' => $response_3rd_api->types, 'name' => $response_3rd_api->name], now()->addHours(6));
+        }
+
         $find = Favorite::where('pokemon_name', $request->pokemon_name)->first();
         if ($find) {
             return response()->json(['message' => $request->pokemon_name . ' already in favorite'], 400);
         }
 
         $abilities = [];
-        if ($request->abilities) {
-            foreach ($request->abilities as $ability) {
+        if ($response_3rd_api->abilities) {
+            foreach ($response_3rd_api->abilities as $ability) {
                 array_push($abilities, [
-                    'name' => $ability['name'],
-                    'is_hidden' => $ability['is_hidden']
+                    'name' => $ability->ability->name,
+                    'is_hidden' => $ability->is_hidden
                 ]);
             }
         }
@@ -78,6 +96,6 @@ class FavoriteController extends Controller
             return response()->json(['message' => $name . ' deleted from favorite']);
         }
 
-        return response()->json(['message' => $name . ' not in favorite', 400]);
+        return response()->json(['message' => $name . ' not in favorite'], 400);
     }
 }
