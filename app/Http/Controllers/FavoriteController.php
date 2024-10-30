@@ -48,8 +48,12 @@ class FavoriteController extends Controller
         } else {
             $response_3rd_api = Http::get("https://pokeapi.co/api/v2/pokemon/" . $request->pokemon_name);
 
-            if ($response_3rd_api->status() !== 200) {
+            if ($response_3rd_api->status() === 404) {
                 return response()->json(['message' => 'Invalid pokemon'], 404);
+            }
+
+            if ($response_3rd_api->status() !== 200) {
+                return response()->json(['message' => '3rd party API error.'], $response_3rd_api->status());
             }
 
             $response_3rd_api = $response_3rd_api->object();
