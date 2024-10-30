@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c48376a5-e4c8-43b5-a713-8145cf689b72",
+		"_postman_id": "54ac1cde-b6da-49b2-98bb-382f800ab6f4",
 		"name": "orderonline-laravel",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10726227"
@@ -394,7 +394,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"pokemon_name\": \"ivysaur\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -428,7 +428,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -509,7 +509,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\",\r\n    \"abilities\": [\r\n        {\r\n            \"name\": \"overgrow\",\r\n            \"is_hidden\": false\r\n        },\r\n        {\r\n            \"name\": \"chlorophyll\",\r\n            \"is_hidden\": true\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"pokemon_name\": \"ivysaur\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

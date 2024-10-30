@@ -35,9 +35,6 @@ class FavoriteController extends Controller
     {
         $request->validate([
             'pokemon_name' => ['required', 'string', 'max:255'],
-            'abilities' => ['nullable'],
-            'abilities.*.name' => ['required', 'string', 'max:255'],
-            'abilities.*.is_hidden' => ['required', 'boolean']
         ]);
 
         $cacheKey = 'show_pokemon_for_favorite_' . $request->pokemon_name;
