@@ -42,7 +42,8 @@ class PokemonController extends Controller
 
                 return response()->json($response);
             }
-            throw new Error($response, $response->status());
+
+            return response()->json(['message' => '3rd party API error.'], $response->status());
         } catch (\Throwable $th) {
             //throw $th;
             return response($th->getMessage(), $th->getCode());
@@ -61,11 +62,17 @@ class PokemonController extends Controller
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/$id");
             if ($response->status() == 200) {
                 $response = $response->object();
-                Cache::put($cacheKey, ['abilities' => $response->abilities, 'species' => $response->species, 'sprites' => $response->sprites, 'height' => $response->height, 'weight' => $response->weight, 'id' => $response->id, 'types' => $response->types, 'name' => $response->name], now()->addHours(6));
+                Cache::put($cacheKey, ['abilities' => $response->abilities, 'species' => $response->species, 'sprites' => $response->sprites, 'height' => $response->height, 'weight' => $response->weight, 'id' => $response->id, 'types' => $response->types, 'name' => $response->name, 'status' => 200], now()->addHours(6));
 
                 return ['abilities' => $response->abilities, 'species' => $response->species, 'sprites' => $response->sprites, 'height' => $response->height, 'weight' => $response->weight, 'id' => $response->id, 'types' => $response->types, 'name' => $response->name];
             }
-            throw new Error($response, $response->status());
+
+            if ($response->status() == 404) {
+                Cache::put($cacheKey, ['status' => 404], now()->addHours(3));
+                return response()->json(['message' => 'Invalid pokemon'], 404);
+            }
+
+            return response()->json(['message' => '3rd party API error.'], $response->status());
         } catch (\Throwable $th) {
             // throw $th;
             return response($th->getMessage(), $th->getCode());

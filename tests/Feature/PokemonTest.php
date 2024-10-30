@@ -19,7 +19,10 @@ class PokemonTest extends TestCase
 
     public function test_get_pokemon_detail(): void
     {
-        $response = $this->get(route('pokemons.show', ['pokemon' => 'bulbasaur']));
-        $response->assertStatus(200);
+        $responseSuccess = $this->get(route('pokemons.show', ['pokemon' => 'bulbasaur']));
+        $responseSuccess->assertStatus(200);
+
+        $responseFail = $this->get(route('pokemons.show', ['pokemon' => 'bulbasaur222']));
+        $responseFail->assertStatus(404);
     }
 }
