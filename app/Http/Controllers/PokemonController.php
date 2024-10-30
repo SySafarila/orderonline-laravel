@@ -56,6 +56,10 @@ class PokemonController extends Controller
             $cacheKey = 'show_pokemon_' . $id;
 
             if (Cache::has($cacheKey)) {
+                $parseCache = json_decode(json_encode(Cache::get($cacheKey)));
+                if ($parseCache->status == 404) {
+                    return response()->json(['message' => 'Invalid pokemon'], 404);
+                }
                 return Cache::get($cacheKey);
             }
 
