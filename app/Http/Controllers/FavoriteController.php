@@ -45,10 +45,14 @@ class FavoriteController extends Controller
         if (Cache::has($cacheKey)) {
             $response_3rd_api = Cache::get($cacheKey);
             $response_3rd_api = json_decode(json_encode($response_3rd_api));
+            if ($response_3rd_api->status == 404) {
+                return response()->json(['message' => 'Invalid pokemon'], 404);
+            }
         } else {
             $response_3rd_api = Http::get("https://pokeapi.co/api/v2/pokemon/" . $request->pokemon_name);
 
             if ($response_3rd_api->status() === 404) {
+                Cache::put($cacheKey, ['status' => 404], now()->addHours(3));
                 return response()->json(['message' => 'Invalid pokemon'], 404);
             }
 
@@ -57,7 +61,7 @@ class FavoriteController extends Controller
             }
 
             $response_3rd_api = $response_3rd_api->object();
-            Cache::put($cacheKey, ['abilities' => $response_3rd_api->abilities, 'species' => $response_3rd_api->species, 'sprites' => $response_3rd_api->sprites, 'height' => $response_3rd_api->height, 'weight' => $response_3rd_api->weight, 'id' => $response_3rd_api->id, 'types' => $response_3rd_api->types, 'name' => $response_3rd_api->name], now()->addHours(6));
+            Cache::put($cacheKey, ['abilities' => $response_3rd_api->abilities, 'species' => $response_3rd_api->species, 'sprites' => $response_3rd_api->sprites, 'height' => $response_3rd_api->height, 'weight' => $response_3rd_api->weight, 'id' => $response_3rd_api->id, 'types' => $response_3rd_api->types, 'name' => $response_3rd_api->name, 'status' => 200], now()->addHours(6));
         }
 
         $find = Favorite::where('pokemon_name', $request->pokemon_name)->first();
